@@ -28,7 +28,7 @@ theorem PEqualNP.Outside.L_goldbach_unit_power_lift :
     | zero => simp
     | succ t ih =>
       rw [Nat.succ_mul, Finset.sum_range_add, ih (by omega), Nat.succ_mul]
-      apply congrArg (_ + ·)
+      apply congrArg (fun x : ℕ => (t * ∑ a ∈ Finset.range p, F p a) + x)
       apply Finset.sum_congr rfl
       intro r hr
       exact block t r (by omega) (Finset.mem_range.mp hr)
